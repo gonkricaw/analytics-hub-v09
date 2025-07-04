@@ -22,17 +22,17 @@
 - [x] Configure timezone settings
 
 ### **3. Package Installation**
-- [ ] Check existing `composer.json` before adding packages
-- [ ] Install Laravel UI for authentication scaffolding
-- [ ] Install UUID package for primary keys
-- [ ] Install encryption package if not built-in
-- [ ] Install mail queue packages
-- [ ] Install activity logging package (spatie/laravel-activitylog)
-- [ ] Check existing `package.json` before adding npm packages
-- [ ] Install frontend dependencies (Bootstrap/Tailwind)
-- [ ] Install Chart.js for dashboard widgets
-- [ ] Install toast notification library
-- [ ] Install icon library (Iconify)
+- [x] Check existing `composer.json` before adding packages
+- [x] Install Laravel UI for authentication scaffolding
+- [x] Install UUID package for primary keys
+- [x] Install encryption package if not built-in
+- [x] Install mail queue packages
+- [x] Install activity logging package (spatie/laravel-activitylog)
+- [x] Check existing `package.json` before adding npm packages
+- [x] Install frontend dependencies (Bootstrap/Tailwind)
+- [x] Install Chart.js for dashboard widgets
+- [x] Install toast notification library
+- [x] Install icon library (Iconify)
 
 ---
 
