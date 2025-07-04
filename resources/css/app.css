@@ -8,4 +8,51 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Analytics Hub Custom Colors */
+    --color-analytics-primary: #FF7A00;
+    --color-analytics-background: #0E0E44;
+    --color-analytics-text-primary: #FFFFFF;
+    --color-analytics-text-secondary: #B0B0B0;
+    --color-analytics-success: #4CAF50;
+    --color-analytics-warning: #FFC107;
+    --color-analytics-error: #F44336;
 }
+
+/* Analytics Hub Custom Styles */
+:root {
+    --primary-background: #0E0E44;
+    --primary-color: #FF7A00;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --error-color: #F44336;
+}
+
+/* Base theme for Analytics Hub */
+body {
+    background-color: var(--primary-background);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+}
+
+/* Loading animations */
+.loading {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+/* Transition effects */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Analytics Hub specific utility classes */
+.bg-analytics-primary { background-color: var(--primary-color); }
+.bg-analytics-background { background-color: var(--primary-background); }
+.text-analytics-primary { color: var(--primary-color); }
+.text-analytics-secondary { color: var(--text-secondary); }
+.text-analytics-success { color: var(--success-color); }
+.text-analytics-warning { color: var(--warning-color); }
+.text-analytics-error { color: var(--error-color); }
