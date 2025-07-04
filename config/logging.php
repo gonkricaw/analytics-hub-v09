@@ -16,6 +16,8 @@ return [
     | messages to your logs. The value provided here should match one of
     | the channels present in the list of "channels" configured below.
     |
+    | Analytics Hub: Configured to use stack logging for comprehensive logging
+    |
     */
 
     'default' => env('LOG_CHANNEL', 'stack'),
@@ -54,7 +56,7 @@ return [
 
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', env('LOG_STACK', 'single')),
+            'channels' => explode(',', env('LOG_STACK', 'daily,analytics_security,analytics_activity')),
             'ignore_exceptions' => false,
         ],
 
@@ -125,6 +127,49 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Analytics Hub Custom Log Channels
+        |--------------------------------------------------------------------------
+        |
+        | Custom logging channels for Analytics Hub specific functionality
+        | These channels provide specialized logging for security, activity,
+        | and system events to meet audit and monitoring requirements.
+        |
+        */
+
+        'analytics_security' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/analytics_security.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => env('LOG_SECURITY_DAYS', 30),
+            'replace_placeholders' => true,
+        ],
+
+        'analytics_activity' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/analytics_activity.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => env('LOG_ACTIVITY_DAYS', 365),
+            'replace_placeholders' => true,
+        ],
+
+        'analytics_email' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/analytics_email.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => env('LOG_EMAIL_DAYS', 7),
+            'replace_placeholders' => true,
+        ],
+
+        'analytics_system' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/analytics_system.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_SYSTEM_DAYS', 14),
+            'replace_placeholders' => true,
         ],
 
     ],

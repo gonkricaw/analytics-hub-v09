@@ -3,23 +3,23 @@
 ## **Project Setup & Foundation**
 
 ### **1. Environment Setup**
-- [ ] Install Laravel (latest stable version)
-- [ ] Configure PostgreSQL database connection
-- [ ] Set up `.env` file with all required variables
-- [ ] Configure SMTP settings for email
-- [ ] Set up Laravel Queue (database driver initially)
-- [ ] Install and configure Laravel Mix for asset compilation
-- [ ] Create base folder structure following Laravel conventions
-- [ ] Initialize Git repository with `.gitignore`
+- [x] Install Laravel (latest stable version)
+- [x] Configure PostgreSQL database connection
+- [x] Set up `.env` file with all required variables
+- [x] Configure SMTP settings for email
+- [x] Set up Laravel Queue (database driver initially)
+- [x] Install and configure Laravel Mix for asset compilation
+- [x] Create base folder structure following Laravel conventions
+- [x] Initialize Git repository with `.gitignore`
 
 ### **2. Base Configuration**
-- [ ] Configure `app/config` files for PostgreSQL
-- [ ] Set up logging configuration
-- [ ] Configure session settings (30-minute timeout)
-- [ ] Set up cache configuration (Redis/File)
-- [ ] Configure queue settings
-- [ ] Set up CORS if needed
-- [ ] Configure timezone settings
+- [x] Configure `app/config` files for PostgreSQL
+- [x] Set up logging configuration
+- [x] Configure session settings (30-minute timeout)
+- [x] Set up cache configuration (Redis/File)
+- [x] Configure queue settings
+- [x] Set up CORS if needed
+- [x] Configure timezone settings
 
 ### **3. Package Installation**
 - [ ] Check existing `composer.json` before adding packages

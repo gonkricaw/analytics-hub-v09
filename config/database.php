@@ -14,9 +14,11 @@ return [
     | the connection which will be utilized unless another connection
     | is explicitly specified when you execute a query / statement.
     |
+    | Analytics Hub: Configured to use PostgreSQL as default database
+    |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -91,10 +93,17 @@ return [
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8'),
-            'prefix' => '',
+            'prefix' => env('DB_PREFIX', 'idbi_'), // Analytics Hub table prefix
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
+            // Analytics Hub specific PostgreSQL optimizations
+            'options' => [
+                PDO::ATTR_TIMEOUT => 30,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ],
         ],
 
         'sqlsrv' => [

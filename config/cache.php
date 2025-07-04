@@ -13,6 +13,8 @@ return [
     | framework. This connection is utilized if another isn't explicitly
     | specified when running a cache operation inside the application.
     |
+    | Analytics Hub: Uses database cache for reliability and persistence
+    |
     */
 
     'default' => env('CACHE_STORE', 'database'),
@@ -90,6 +92,51 @@ return [
             'driver' => 'octane',
         ],
 
+        /*
+        |--------------------------------------------------------------------------
+        | Analytics Hub Custom Cache Stores
+        |--------------------------------------------------------------------------
+        |
+        | Custom cache stores for Analytics Hub specific caching needs
+        | These stores provide optimized caching for different data types
+        | with appropriate TTL settings for each use case.
+        |
+        */
+
+        'analytics_sessions' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'prefix' => 'analytics_sessions_',
+        ],
+
+        'analytics_permissions' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'prefix' => 'analytics_permissions_',
+        ],
+
+        'analytics_menus' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'prefix' => 'analytics_menus_',
+        ],
+
+        'analytics_widgets' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/widgets'),
+            'lock_path' => storage_path('framework/cache/widgets'),
+        ],
+
+        'analytics_content' => [
+            'driver' => 'database',
+            'connection' => env('DB_CACHE_CONNECTION'),
+            'table' => env('DB_CACHE_TABLE', 'cache'),
+            'prefix' => 'analytics_content_',
+        ],
+
     ],
 
     /*
@@ -101,8 +148,10 @@ return [
     | stores, there might be other applications using the same cache. For
     | that reason, you may prefix every cache key to avoid collisions.
     |
+    | Analytics Hub: Custom prefix for application-specific caching
+    |
     */
 
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+    'prefix' => env('CACHE_PREFIX', 'analytics_hub_cache_'),
 
 ];

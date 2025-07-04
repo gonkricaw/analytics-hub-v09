@@ -13,6 +13,8 @@ return [
     | incoming requests. Laravel supports a variety of storage options to
     | persist session data. Database storage is a great default choice.
     |
+    | Analytics Hub: Uses database driver for session tracking and security
+    |
     | Supported: "file", "cookie", "database", "memcached",
     |            "redis", "dynamodb", "array"
     |
@@ -30,9 +32,11 @@ return [
     | to expire immediately when the browser is closed then you may
     | indicate that via the expire_on_close configuration option.
     |
+    | Analytics Hub: Configured for 30-minute timeout as per security requirements
+    |
     */
 
-    'lifetime' => (int) env('SESSION_LIFETIME', 120),
+    'lifetime' => (int) env('SESSION_LIFETIME', 30),
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 
@@ -45,9 +49,11 @@ return [
     | should be encrypted before it's stored. All encryption is performed
     | automatically by Laravel and you may use the session like normal.
     |
+    | Analytics Hub: Encryption enabled for enhanced security
+    |
     */
 
-    'encrypt' => env('SESSION_ENCRYPT', false),
+    'encrypt' => env('SESSION_ENCRYPT', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,6 +90,8 @@ return [
     | be used to store sessions. Of course, a sensible default is defined
     | for you; however, you're welcome to change this to another table.
     |
+    | Analytics Hub: Uses idbi_ prefixed table for consistency
+    |
     */
 
     'table' => env('SESSION_TABLE', 'sessions'),
@@ -112,9 +120,11 @@ return [
     | rid of old sessions from storage. Here are the chances that it will
     | happen on a given request. By default, the odds are 2 out of 100.
     |
+    | Analytics Hub: Increased frequency for better session cleanup
+    |
     */
 
-    'lottery' => [2, 100],
+    'lottery' => [5, 100],
 
     /*
     |--------------------------------------------------------------------------
@@ -167,9 +177,11 @@ return [
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you when it can't be done securely.
     |
+    | Analytics Hub: Enhanced security for production environments
+    |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -179,6 +191,8 @@ return [
     | Setting this value to true will prevent JavaScript from accessing the
     | value of the cookie and the cookie will only be accessible through
     | the HTTP protocol. It's unlikely you should disable this option.
+    |
+    | Analytics Hub: Enabled for enhanced security
     |
     */
 
@@ -193,13 +207,15 @@ return [
     | take place, and can be used to mitigate CSRF attacks. By default, we
     | will set this value to "lax" to permit secure cross-site requests.
     |
+    | Analytics Hub: Set to strict for enhanced CSRF protection
+    |
     | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
     |
     | Supported: "lax", "strict", "none", null
     |
     */
 
-    'same_site' => env('SESSION_SAME_SITE', 'lax'),
+    'same_site' => env('SESSION_SAME_SITE', 'strict'),
 
     /*
     |--------------------------------------------------------------------------

@@ -11,6 +11,8 @@ return [
     | API, giving you convenient access to each backend using identical
     | syntax for each. The default queue connection is defined below.
     |
+    | Analytics Hub: Uses database driver for reliable email and job processing
+    |
     */
 
     'default' => env('QUEUE_CONNECTION', 'database'),
@@ -41,6 +43,34 @@ return [
             'queue' => env('DB_QUEUE', 'default'),
             'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
             'after_commit' => false,
+        ],
+
+        // Analytics Hub specific queue configurations
+        'analytics_emails' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => 'emails',
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
+        ],
+
+        'analytics_notifications' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => 'notifications',
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 60),
+            'after_commit' => false,
+        ],
+
+        'analytics_activities' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => 'activities',
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 30),
+            'after_commit' => true,
         ],
 
         'beanstalkd' => [
@@ -83,10 +113,12 @@ return [
     | batching information. These options can be updated to any database
     | connection and table which has been defined by your application.
     |
+    | Analytics Hub: Configured to use PostgreSQL for job batching
+    |
     */
 
     'batching' => [
-        'database' => env('DB_CONNECTION', 'sqlite'),
+        'database' => env('DB_CONNECTION', 'pgsql'),
         'table' => 'job_batches',
     ],
 
@@ -99,13 +131,15 @@ return [
     | can control how and where failed jobs are stored. Laravel ships with
     | support for storing failed jobs in a simple file or in a database.
     |
+    | Analytics Hub: Uses database with UUIDs for failed job tracking
+    |
     | Supported drivers: "database-uuids", "dynamodb", "file", "null"
     |
     */
 
     'failed' => [
         'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
-        'database' => env('DB_CONNECTION', 'sqlite'),
+        'database' => env('DB_CONNECTION', 'pgsql'),
         'table' => 'failed_jobs',
     ],
 

@@ -63,9 +63,12 @@ return [
     | will be used by the PHP date and date-time functions. The timezone
     | is set to "UTC" by default as it is suitable for most use cases.
     |
+    | Analytics Hub: Configured for Indonesian timezone (Asia/Jakarta)
+    | This can be overridden per user in their profile settings
+    |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'Asia/Jakarta'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +79,8 @@ return [
     | by Laravel's translation / localization methods. This option can be
     | set to any locale for which you plan to have translation strings.
     |
+    | Analytics Hub: Configured for English with Indonesian fallback support
+    |
     */
 
     'locale' => env('APP_LOCALE', 'en'),
@@ -83,6 +88,21 @@ return [
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supported Locales
+    |--------------------------------------------------------------------------
+    |
+    | Analytics Hub supported locales for multi-language support
+    | Users can switch between these locales in their profile settings
+    |
+    */
+
+    'supported_locales' => [
+        'en' => 'English',
+        'id' => 'Bahasa Indonesia',
+    ],
 
     /*
     |--------------------------------------------------------------------------
