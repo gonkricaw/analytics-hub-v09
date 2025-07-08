@@ -39,50 +39,54 @@
 ## **Database Layer Development**
 
 ### **4. Database Schema Creation**
-- [ ] Create migration for `idbi_users` table with UUID
-- [ ] Create migration for `idbi_roles` table
-- [ ] Create migration for `idbi_permissions` table
-- [ ] Create migration for `idbi_role_permissions` pivot table
-- [ ] Create migration for `idbi_user_roles` pivot table
-- [ ] Create migration for `idbi_menus` table (3-level hierarchy)
-- [ ] Create migration for `idbi_menu_roles` pivot table
-- [ ] Create migration for `idbi_contents` table
-- [ ] Create migration for `idbi_content_roles` pivot table
-- [ ] Create migration for `idbi_email_templates` table
-- [ ] Create migration for `idbi_email_queue` table
-- [ ] Create migration for `idbi_notifications` table
-- [ ] Create migration for `idbi_user_notifications` pivot table
-- [ ] Create migration for `idbi_user_activities` table
-- [ ] Create migration for `idbi_password_resets` table
-- [ ] Create migration for `idbi_blacklisted_ips` table
-- [ ] Create migration for `idbi_system_configs` table
-- [ ] Create migration for `idbi_user_avatars` table
-- [ ] Create migration for `idbi_login_attempts` table
-- [ ] Create migration for `idbi_password_histories` table
+- [x] Create migration for `idbi_users` table with UUID
+- [x] Create migration for `idbi_roles` table
+- [x] Create migration for `idbi_permissions` table
+- [x] Create migration for `idbi_role_permissions` pivot table
+- [x] Create migration for `idbi_user_roles` pivot table
+- [x] Create migration for `idbi_menus` table (3-level hierarchy)
+- [x] Create migration for `idbi_menu_roles` pivot table
+- [x] Create migration for `idbi_contents` table
+- [x] Create migration for `idbi_content_roles` pivot table
+- [x] Create migration for `idbi_email_templates` table
+- [x] Create migration for `idbi_email_queue` table
+- [x] Create migration for `idbi_notifications` table
+- [x] Create migration for `idbi_user_notifications` pivot table
+- [x] Create migration for `idbi_user_activities` table
+- [x] Create migration for `idbi_password_resets` table
+- [x] Create migration for `idbi_blacklisted_ips` table
+- [x] Create migration for `idbi_system_configs` table
+- [x] Create migration for `idbi_user_avatars` table
+- [x] Create migration for `idbi_login_attempts` table
+- [x] Create migration for `idbi_password_histories` table
 
 ### **5. Database Views Creation**
-- [ ] Create view `v_top_active_users` for monthly login statistics
-- [ ] Create view `v_login_trends` for 15-day login data
-- [ ] Create view `v_popular_content` for most visited content
-- [ ] Create view `v_online_users` for real-time sessions
+- [x] Create view `v_top_active_users` for monthly login statistics
+- [x] Create view `v_login_trends` for 15-day login data
+- [ ] Create view `v_popular_content` for most visited content (partially completed, needs refinement)
+- [ ] Create view `v_online_users` for real-time sessions (partially completed, needs refinement)
 - [ ] Add indexes to all foreign key columns
 - [ ] Add indexes to frequently queried columns
-- [ ] Test all migrations with rollback
+- [x] Test all migrations with rollback
 
 ### **6. Model Creation**
-- [ ] Create User model with UUID trait
-- [ ] Create Role model with relationships
-- [ ] Create Permission model
-- [ ] Create Menu model with hierarchical relationships
-- [ ] Create Content model with encryption methods
-- [ ] Create EmailTemplate model
-- [ ] Create Notification model
-- [ ] Create UserActivity model
-- [ ] Create BlacklistedIp model
-- [ ] Create SystemConfig model
-- [ ] Add all model relationships
-- [ ] Add model scopes for common queries
-- [ ] Add model observers for activity logging
+- [x] Create User model with UUID trait
+- [x] Create Role model with relationships
+- [x] Create Permission model
+- [x] Create Menu model with hierarchical relationships
+- [x] Create Content model with encryption methods
+- [x] Create EmailTemplate model
+- [x] Create EmailQueue model
+- [x] Create Notification model
+- [x] Create UserActivity model
+- [x] Create BlacklistedIp model
+- [x] Create SystemConfig model
+- [x] Create UserAvatar model
+- [x] Create LoginAttempt model
+- [x] Create PasswordHistory model
+- [x] Add all model relationships
+- [x] Add model scopes for common queries
+- [x] Add model observers for activity logging
 
 ---
 
