@@ -211,7 +211,7 @@ class AuthController extends Controller
 
         // Check if terms need to be accepted
         if (!$user->has_accepted_terms) {
-            return redirect()->route('auth.terms');
+            return redirect()->route('terms.show');
         }
 
         // Check if password is expired

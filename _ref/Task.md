@@ -110,22 +110,22 @@
 - [x] Implement password reset with UUID tokens
 - [x] Add token expiry (120 minutes)
 - [x] Implement 30-second cooldown between requests
-- [ ] Create force password change on first login
+- [x] Create force password change on first login
 
 ### **9. Terms & Conditions**
-- [ ] Create T&C acceptance tracking in database
-- [ ] Build T&C modal component
-- [ ] Implement force T&C on first login
-- [ ] Add T&C acceptance logging
-- [ ] Create T&C update notification system
+- [x] Create T&C acceptance tracking in database
+- [x] Build T&C modal component
+- [x] Implement force T&C on first login
+- [x] Add T&C acceptance logging
+- [x] Create T&C update notification system
 
 ---
 
 ## **Authorization System Development**
 
 ### **10. Role & Permission System**
-- [ ] Create role management CRUD
-- [ ] Create permission management CRUD
+- [x] Create role management CRUD
+- [x] Create permission management CRUD
 - [ ] Build role-permission assignment interface
 - [ ] Implement permission checking middleware
 - [ ] Create role-based menu filtering

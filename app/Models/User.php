@@ -294,23 +294,30 @@ class User extends Authenticatable
      */
     public function getHasAcceptedTermsAttribute()
     {
-        return $this->terms_accepted && $this->terms_accepted_at;
+        if (!$this->terms_accepted) {
+            return false;
+        }
+
+        // Check if current terms version is accepted
+        $currentVersion = config('app.terms_version', '1.0');
+        return $this->terms_version === $currentVersion;
     }
 
     /**
-     * Check if user's password is expired.
+     * Check if password is expired.
      */
     public function getIsPasswordExpiredAttribute()
     {
-        if (!$this->password_expires) {
+        if (!$this->password_expires || !$this->password_expiry_days) {
             return false;
         }
 
         if (!$this->password_changed_at) {
-            return true; // Never changed password
+            return true; // Force password change if never changed
         }
 
-        return $this->password_changed_at->addDays($this->password_expiry_days)->isPast();
+        $expiryDate = $this->password_changed_at->addDays($this->password_expiry_days);
+        return now()->greaterThan($expiryDate);
     }
 
     /**
@@ -365,6 +372,17 @@ class User extends Authenticatable
                         $query->where('name', $permissionName)
                               ->where('is_active', true);
                     })->exists();
+    }
+
+    /**
+     * Mark user as having completed first login.
+     */
+    public function markFirstLoginComplete()
+    {
+        $this->update([
+            'is_first_login' => false,
+            'password_changed_at' => now(),
+        ]);
     }
 
     /**
